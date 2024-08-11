@@ -1,6 +1,7 @@
 // server.js
 const express = require('express');
 const connectDB = require('./config/database');
+const MeasurementRoutes = require('./routes/Measurements');
 require('dotenv').config();
 
 const app = express();
@@ -10,6 +11,8 @@ connectDB();
 
 // Middleware
 app.use(express.json());
+
+app.use('/api/measurements', MeasurementRoutes);
 
 // Routen
 app.get('/', (req, res) => {
